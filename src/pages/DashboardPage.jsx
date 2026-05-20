@@ -112,7 +112,7 @@ export default function DashboardPage({
 
             {/* Modal Dialog */}
             <motion.div
-              className="relative w-full max-w-md rounded-2xl border p-6 overflow-hidden z-10"
+              className="relative w-full max-w-md rounded-2xl border p-5 sm:p-6 overflow-y-auto max-h-[90vh] z-10 scrollbar-hide"
               style={{
                 background: '#0d0d14',
                 borderColor: 'rgba(255,255,255,0.08)',
@@ -124,23 +124,23 @@ export default function DashboardPage({
             >
               <div className="flex items-center justify-between mb-5">
                 <div className="flex items-center gap-2">
-                  <Award size={18} style={{ color: '#00ff41' }} />
-                  <h3 className="text-sm font-bold text-white tracking-wide">
+                  <Award size={16} className="text-[#00ff41] flex-shrink-0" />
+                  <h3 className="text-xs sm:text-sm font-bold text-white tracking-wider font-mono">
                     NUEVA MISIÓN PERSONALIZADA
                   </h3>
                 </div>
                 <button
                   onClick={() => setIsAddModalOpen(false)}
-                  className="p-1.5 rounded-full"
+                  className="p-1.5 rounded-full cursor-pointer hover:bg-white/10 transition-colors"
                   style={{ background: 'rgba(255,255,255,0.05)' }}
                 >
                   <X size={14} style={{ color: 'rgba(255,255,255,0.4)' }} />
                 </button>
               </div>
 
-              <form onSubmit={handleSubmitCustom} className="flex flex-col gap-3.5">
+              <form onSubmit={handleSubmitCustom} className="flex flex-col gap-4">
                 <div>
-                  <label className="text-[10px] font-bold text-white/40 block mb-1">
+                  <label className="text-[10px] font-semibold text-white/50 tracking-wider mb-1 block">
                     TÍTULO DEL DESAFÍO
                   </label>
                   <input
@@ -149,12 +149,12 @@ export default function DashboardPage({
                     placeholder="Ej. Saludar de mano con firmeza"
                     value={customTitle}
                     onChange={(e) => setCustomTitle(e.target.value)}
-                    className="w-full py-2.5 px-3 rounded-xl text-xs text-white bg-white/3 border border-white/8 outline-none focus:border-[#00ff41]/40 focus:bg-white/5 transition-all placeholder-white/20"
+                    className="w-full py-2.5 px-3 rounded-xl text-xs text-white bg-[#12121c] border border-white/10 outline-none focus:border-[#00ff41]/40 focus:bg-[#151522] transition-all placeholder-white/20"
                   />
                 </div>
 
                 <div>
-                  <label className="text-[10px] font-bold text-white/40 block mb-1">
+                  <label className="text-[10px] font-semibold text-white/50 tracking-wider mb-1 block">
                     DESCRIPCIÓN DE LA ACCIÓN
                   </label>
                   <textarea
@@ -163,19 +163,19 @@ export default function DashboardPage({
                     placeholder="Ej. Mantén el agarre seguro durante 2 segundos y haz un cumplido sobre su energía o vibra."
                     value={customDesc}
                     onChange={(e) => setCustomDesc(e.target.value)}
-                    className="w-full py-2.5 px-3 rounded-xl text-xs text-white bg-white/3 border border-white/8 outline-none focus:border-[#00ff41]/40 focus:bg-white/5 transition-all placeholder-white/20 resize-none leading-relaxed"
+                    className="w-full py-2.5 px-3 rounded-xl text-xs text-white bg-[#12121c] border border-white/10 outline-none focus:border-[#00ff41]/40 focus:bg-[#151522] transition-all placeholder-white/20 resize-none leading-relaxed"
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   <div>
-                    <label className="text-[10px] font-bold text-white/40 block mb-1">
+                    <label className="text-[10px] font-semibold text-white/50 tracking-wider mb-1 block">
                       FASE SOCIAL
                     </label>
                     <select
                       value={customPhase}
                       onChange={(e) => setCustomPhase(e.target.value)}
-                      className="w-full py-2.5 px-3 rounded-xl text-xs text-white bg-[#0d0d14] border border-white/8 outline-none focus:border-[#00ff41]/40 focus:bg-white/5 transition-all cursor-pointer"
+                      className="w-full py-2.5 px-3 rounded-xl text-xs text-white bg-[#12121c] border border-white/10 outline-none focus:border-[#00ff41]/40 focus:bg-[#151522] transition-all cursor-pointer"
                       style={{ colorScheme: 'dark' }}
                     >
                       <option value="1" className="bg-[#12121c] text-white">Fase 1: Rompehielos</option>
@@ -185,7 +185,7 @@ export default function DashboardPage({
                   </div>
 
                   <div>
-                    <label className="text-[10px] font-bold text-white/40 block mb-1">
+                    <label className="text-[10px] font-semibold text-white/50 tracking-wider mb-1 block">
                       XP RECOMPENSA
                     </label>
                     <input
@@ -195,7 +195,7 @@ export default function DashboardPage({
                       max="500"
                       value={customXP}
                       onChange={(e) => setCustomXP(e.target.value)}
-                      className="w-full py-2.5 px-3 rounded-xl text-xs text-white bg-white/3 border border-white/8 outline-none focus:border-[#00ff41]/40 focus:bg-white/5 transition-all"
+                      className="w-full py-2.5 px-3 rounded-xl text-xs text-white bg-[#12121c] border border-white/10 outline-none focus:border-[#00ff41]/40 focus:bg-[#151522] transition-all"
                     />
                   </div>
                 </div>

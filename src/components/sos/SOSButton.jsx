@@ -34,7 +34,7 @@ export default function SOSButton() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="absolute inset-0 z-45"
+            className="fixed inset-0 z-45"
             style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -48,7 +48,7 @@ export default function SOSButton() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="absolute bottom-24 right-4 z-50 flex flex-col gap-2 items-end"
+            className="fixed bottom-36 right-4 z-50 flex flex-col gap-2 items-end"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
@@ -99,7 +99,7 @@ export default function SOSButton() {
       {/* FAB Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="absolute bottom-20 right-4 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-2xl"
+        className="fixed bottom-20 right-4 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-2xl"
         style={{
           background: isOpen ? 'rgba(255,255,255,0.1)' : 'linear-gradient(135deg, #ff0040, #ff4400)',
           boxShadow: isOpen ? 'none' : '0 0 25px rgba(255,0,64,0.4)'

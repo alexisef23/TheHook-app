@@ -60,21 +60,12 @@ export default function Header({ totalXP, maxXP, activeTab, onTabChange }) {
 
           {/* User Badge / XP / Avatar */}
           <div className="flex items-center gap-3">
-            <div className="flex flex-col items-end gap-1.5">
-              <div className="flex items-center gap-2 bg-white/[0.02] border border-white/5 py-1 px-2.5 rounded-full select-none">
-                <Trophy size={11} style={{ color: '#ffd700' }} />
+            <div className="flex flex-col items-end gap-1">
+              <div className="flex items-center gap-1.5 bg-white/[0.02] border border-white/5 py-1 px-2.5 rounded-full select-none">
+                <Trophy size={11} style={{ color: '#ffd700' }} className="flex-shrink-0" />
                 <span className="text-[11px] font-mono font-bold text-[#00ff41]">{totalXP}</span>
-                <span className="text-[9px] text-white/30 font-mono">/ {maxXP} XP</span>
-              </div>
-              {/* XP Progress Bar */}
-              <div className="w-24 sm:w-32 h-1 rounded-full overflow-hidden bg-white/5">
-                <motion.div
-                  className="h-full rounded-full shadow-[0_0_8px_rgba(0,255,65,0.4)]"
-                  style={{ background: 'linear-gradient(90deg, #00ff41, #00d4ff)' }}
-                  initial={{ width: 0 }}
-                  animate={{ width: `${progress}%` }}
-                  transition={{ duration: 0.8, ease: 'easeOut' }}
-                />
+                <span className="text-[9px] text-white/30 font-mono hidden sm:inline">/ {maxXP} XP</span>
+                <span className="text-[9px] text-white/30 font-mono sm:hidden">XP</span>
               </div>
             </div>
 
@@ -101,6 +92,16 @@ export default function Header({ totalXP, maxXP, activeTab, onTabChange }) {
             </motion.div>
           </div>
         </div>
+      </div>
+      {/* Bottom Header Progress Accent */}
+      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-white/5 overflow-hidden">
+        <motion.div
+          className="h-full shadow-[0_0_8px_rgba(0,255,65,0.4)]"
+          style={{ background: 'linear-gradient(90deg, #00ff41, #00d4ff)' }}
+          initial={{ width: 0 }}
+          animate={{ width: `${progress}%` }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+        />
       </div>
     </header>
   );
