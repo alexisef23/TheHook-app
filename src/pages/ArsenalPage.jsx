@@ -56,7 +56,7 @@ export default function ArsenalPage({ missions = [] }) {
           placeholder="Buscar tips..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full pl-10.5 pr-4 py-2.5 rounded-xl text-sm text-white placeholder-white/30 border outline-none focus:border-[#00ff41]/40 focus:bg-white/5 transition-all shadow-[0_0_15px_rgba(0,0,0,0.2)]"
+          className="w-full pl-11 pr-4 py-2.5 rounded-xl text-sm text-white placeholder-white/30 border outline-none focus:border-[#00ff41]/40 focus:bg-white/5 transition-all shadow-[0_0_15px_rgba(0,0,0,0.2)]"
           style={{ background: 'rgba(255,255,255,0.04)', borderColor: 'rgba(255,255,255,0.08)' }}
         />
       </motion.div>

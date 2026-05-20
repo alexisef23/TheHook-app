@@ -18,7 +18,7 @@ export default function MissionModal({ mission, isCompleted, onComplete, onClose
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed inset-0 z-50 flex items-end md:items-center justify-center p-0 md:p-4 overflow-hidden"
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -34,19 +34,14 @@ export default function MissionModal({ mission, isCompleted, onComplete, onClose
 
         {/* Modal */}
         <motion.div
-          className="relative w-full max-w-md rounded-t-[32px] md:rounded-2xl border-t md:border border-white/10 overflow-hidden z-10"
-          style={{ background: '#0d0d14', maxHeight: '90vh' }}
-          initial={{ y: '100%' }}
-          animate={{ y: 0 }}
-          exit={{ y: '100%' }}
-          transition={{ type: 'spring', damping: 28, stiffness: 280 }}
+          className="relative w-full max-w-md rounded-2xl border border-white/10 overflow-hidden z-10"
+          style={{ background: '#0d0d14', maxHeight: '85vh' }}
+          initial={{ scale: 0.95, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.95, opacity: 0 }}
+          transition={{ type: 'spring', damping: 25, stiffness: 300 }}
         >
-          {/* Handle bar */}
-          <div className="flex justify-center pt-3 pb-1">
-            <div className="w-10 h-1 rounded-full" style={{ background: 'rgba(255,255,255,0.15)' }} />
-          </div>
-
-          <div className="px-5 pb-8 overflow-y-auto" style={{ maxHeight: 'calc(85vh - 20px)' }}>
+          <div className="p-5 sm:p-6 overflow-y-auto max-h-[85vh] scrollbar-hide">
             {/* Header */}
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center gap-3">
