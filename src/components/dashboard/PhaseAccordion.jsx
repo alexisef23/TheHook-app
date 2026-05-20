@@ -27,26 +27,27 @@ export default function PhaseAccordion({ phase, missions, phaseProgress, isMissi
       className="rounded-2xl border overflow-hidden"
       style={{
         background: 'rgba(255,255,255,0.02)',
-        borderColor: allCompleted ? 'rgba(0,255,65,0.2)' : 'rgba(255,255,255,0.05)'
+        borderColor: allCompleted ? 'rgba(0,255,65,0.3)' : 'rgba(255,255,255,0.1)',
+        boxShadow: allCompleted ? '0 0 25px rgba(0,255,65,0.1)' : 'none'
       }}
       layout
     >
       {/* Accordion Header */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center gap-3 p-4 transition-colors"
+        className="w-full flex items-center gap-4 px-5 py-4.5 transition-colors"
         whileTap={{ scale: 0.99 }}
       >
-        <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `${color}15` }}>
-          <Icon size={20} style={{ color }} />
+        <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `${color}18` }}>
+          <Icon size={22} style={{ color }} />
         </div>
 
         <div className="flex-1 text-left">
-          <div className="flex items-center gap-2">
-            <h2 className="text-sm font-bold text-white">Fase {phase.id}</h2>
-            <span className="text-[10px] font-medium px-2 py-0.5 rounded-full" style={{ background: `${color}15`, color }}>{phase.subtitulo}</span>
+          <div className="flex items-center gap-2.5">
+            <h2 className="text-base font-bold text-white">Fase {phase.id}</h2>
+            <span className="text-[11px] font-bold px-2.5 py-1 rounded-full tracking-wide" style={{ background: `${color}18`, color }}>{phase.subtitulo}</span>
           </div>
-          <p className="text-xs mt-0.5" style={{ color: 'rgba(255,255,255,0.35)' }}>{phase.nombre}</p>
+          <p className="text-xs mt-1.5" style={{ color: 'rgba(255,255,255,0.45)' }}>{phase.nombre}</p>
         </div>
 
         <ProgressRing completed={phaseProgress.completed} total={phaseProgress.total} />
@@ -55,7 +56,7 @@ export default function PhaseAccordion({ phase, missions, phaseProgress, isMissi
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3 }}
         >
-          <ChevronDown size={18} style={{ color: 'rgba(255,255,255,0.3)' }} />
+          <ChevronDown size={20} style={{ color: 'rgba(255,255,255,0.4)' }} />
         </motion.div>
       </motion.button>
 
@@ -69,7 +70,7 @@ export default function PhaseAccordion({ phase, missions, phaseProgress, isMissi
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
-            <div className="px-4 pb-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="px-5 pb-6 pt-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4.5">
               {missions.map((mission, index) => (
                 <motion.div
                   key={mission.id}

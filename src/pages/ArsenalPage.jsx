@@ -37,44 +37,45 @@ export default function ArsenalPage({ missions = [] }) {
   });
 
   return (
-    <div className="px-4 py-4 pb-24">
+    <div className="px-3.5 sm:px-5 py-5 pb-28">
       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-        <h2 className="text-lg font-bold text-white mb-1">Arsenal de Tips</h2>
-        <p className="text-xs mb-4" style={{ color: 'rgba(255,255,255,0.35)' }}>Tu guía táctica para cada situación</p>
+        <h2 className="text-xl font-bold text-white tracking-wider">🎯 Arsenal de Tips</h2>
+        <p className="text-xs mt-1" style={{ color: 'rgba(255,255,255,0.45)' }}>Tu guía táctica para cada situación</p>
       </motion.div>
 
       {/* Search */}
       <motion.div
-        className="relative mb-5"
+        className="relative mb-6 mt-5"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.05 }}
       >
-        <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2" style={{ color: 'rgba(255,255,255,0.45)' }} />
+        <Search size={20} className="absolute left-3.5 top-1/2 -translate-y-1/2" style={{ color: 'rgba(255,255,255,0.55)' }} />
         <input
           type="text"
           placeholder="Buscar tips..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full pl-11 pr-4 py-2.5 rounded-xl text-sm text-white placeholder-white/30 border outline-none focus:border-[#00ff41]/40 focus:bg-white/5 transition-all shadow-[0_0_15px_rgba(0,0,0,0.2)]"
-          style={{ background: 'rgba(255,255,255,0.04)', borderColor: 'rgba(255,255,255,0.08)' }}
+          className="w-full pl-12 pr-4.5 py-3 rounded-xl text-sm text-white placeholder-white/35 border outline-none focus:border-[#00ff41]/50 focus:bg-white/6 transition-all shadow-[0_0_20px_rgba(0,0,0,0.3)]"
+          style={{ background: 'rgba(255,255,255,0.06)', borderColor: 'rgba(255,255,255,0.12)' }}
         />
       </motion.div>
 
       {/* Category Filters */}
       <motion.div
-        className="flex gap-2 mb-6 overflow-x-auto pb-2.5 scrollbar-hide -mx-4 px-4"
+        className="flex gap-2.5 mb-8 overflow-x-auto pb-3 scrollbar-hide -mx-3.5 sm:-mx-5 px-3.5 sm:px-5"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.1 }}
       >
         <button
           onClick={() => setActiveCategory('all')}
-          className="px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border transition-all"
+          className="px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap border transition-all tracking-wide"
           style={{
-            background: activeCategory === 'all' ? 'rgba(0,255,65,0.1)' : 'transparent',
-            borderColor: activeCategory === 'all' ? 'rgba(0,255,65,0.3)' : 'rgba(255,255,255,0.08)',
-            color: activeCategory === 'all' ? '#00ff41' : 'rgba(255,255,255,0.5)'
+            background: activeCategory === 'all' ? 'rgba(0,255,65,0.15)' : 'transparent',
+            borderColor: activeCategory === 'all' ? 'rgba(0,255,65,0.4)' : 'rgba(255,255,255,0.1)',
+            color: activeCategory === 'all' ? '#00ff41' : 'rgba(255,255,255,0.6)',
+            boxShadow: activeCategory === 'all' ? '0 0 15px rgba(0,255,65,0.1)' : 'none'
           }}
         >
           Todos
@@ -85,11 +86,12 @@ export default function ArsenalPage({ missions = [] }) {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className="px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border transition-all"
+              className="px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap border transition-all tracking-wide"
               style={{
-                background: activeCategory === cat ? `${color}15` : 'transparent',
-                borderColor: activeCategory === cat ? `${color}40` : 'rgba(255,255,255,0.08)',
-                color: activeCategory === cat ? color : 'rgba(255,255,255,0.5)'
+                background: activeCategory === cat ? `${color}18` : 'transparent',
+                borderColor: activeCategory === cat ? `${color}40` : 'rgba(255,255,255,0.1)',
+                color: activeCategory === cat ? color : 'rgba(255,255,255,0.6)',
+                boxShadow: activeCategory === cat ? `0 0 15px ${color}15` : 'none'
               }}
             >
               {cat}
@@ -99,7 +101,7 @@ export default function ArsenalPage({ missions = [] }) {
       </motion.div>
 
       {/* Tips Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         <AnimatePresence mode="popLayout">
           {filteredMissions.map((mission, index) => {
             const Icon = categoryIcons[mission.categoria_tip] || Lightbulb;
@@ -109,39 +111,39 @@ export default function ArsenalPage({ missions = [] }) {
               <motion.div
                 key={mission.id}
                 layout
-                initial={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
+                exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ delay: index * 0.03 }}
                 onClick={() => toggleExpand(mission.id)}
-                className="rounded-xl border p-4.5 cursor-pointer hover:border-white/10 transition-colors select-none group flex flex-col justify-between"
+                className="rounded-xl border p-5 cursor-pointer hover:border-white/20 transition-all select-none group flex flex-col justify-between"
                 style={{
-                  background: isExpanded ? 'rgba(255,255,255,0.03)' : 'rgba(255,255,255,0.015)',
-                  borderColor: isExpanded ? `${color}40` : 'rgba(255,255,255,0.05)',
-                  boxShadow: isExpanded ? `0 0 20px ${color}05` : 'none'
+                  background: isExpanded ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.03)',
+                  borderColor: isExpanded ? `${color}50` : 'rgba(255,255,255,0.08)',
+                  boxShadow: isExpanded ? `0 0 30px ${color}12` : 'none'
                 }}
               >
                 <div>
-                  <div className="flex items-start justify-between gap-2 mb-3.5">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8.5 h-8.5 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${color}15` }}>
-                        <Icon size={16} style={{ color }} />
+                  <div className="flex items-start justify-between gap-3 mb-4">
+                    <div className="flex items-center gap-3.5">
+                      <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${color}20` }}>
+                        <Icon size={18} style={{ color }} />
                       </div>
                       <div>
-                        <div className="flex items-center gap-2">
-                          <h3 className="text-sm font-semibold text-white group-hover:text-[#00ff41] transition-colors">{mission.titulo}</h3>
-                          {mission.es_jefe && <span className="text-[8px] font-bold px-1.5 py-0.5 rounded tracking-wide" style={{ background: 'rgba(255,215,0,0.15)', color: '#ffd700' }}>JEFE</span>}
+                        <div className="flex items-center gap-2.5">
+                          <h3 className="text-sm font-bold text-white group-hover:text-[#00ff41] transition-colors">{mission.titulo}</h3>
+                          {mission.es_jefe && <span className="text-[8px] font-bold px-2 py-0.5 rounded-full tracking-widest" style={{ background: 'rgba(255,215,0,0.2)', color: '#ffd700' }}>👑 JEFE</span>}
                         </div>
-                        <span className="text-[10px] font-medium tracking-wide" style={{ color }}>{mission.categoria_tip}</span>
+                        <span className="text-[11px] font-bold tracking-wide mt-1 block" style={{ color }}>{mission.categoria_tip}</span>
                       </div>
                     </div>
 
                     <motion.div
                       animate={{ rotate: isExpanded ? 180 : 0 }}
                       transition={{ duration: 0.2 }}
-                      className="p-1 rounded-full bg-white/5 opacity-55 group-hover:opacity-100 transition-opacity"
+                      className="p-1.5 rounded-full bg-white/8 opacity-60 group-hover:opacity-100 transition-opacity"
                     >
-                      <ChevronDown size={14} className="text-white" />
+                      <ChevronDown size={16} className="text-white" />
                     </motion.div>
                   </div>
 
@@ -151,7 +153,7 @@ export default function ArsenalPage({ missions = [] }) {
                   >
                     <p
                       className={`text-xs leading-relaxed transition-all duration-300 ${
-                        isExpanded ? 'text-white/80' : 'text-white/45 line-clamp-2'
+                        isExpanded ? 'text-white/85' : 'text-white/55 line-clamp-2'
                       }`}
                     >
                       {mission.tip_ayuda}
@@ -159,15 +161,15 @@ export default function ArsenalPage({ missions = [] }) {
                   </motion.div>
                 </div>
 
-                <div className="mt-3.5 pt-2.5 border-t border-white/5 flex items-center justify-between">
-                  <span className="text-[9px] text-white/25 font-mono">
-                    {isExpanded ? 'Clic para cerrar' : 'Clic para abrir'}
+                <div className="mt-4 pt-3.5 border-t border-white/8 flex items-center justify-between">
+                  <span className="text-[9px] text-white/30 font-mono">
+                    {isExpanded ? 'Clic para cerrar' : 'Clic para ver más'}
                   </span>
                   <span
-                    className="text-[10px] font-bold tracking-wide transition-all"
+                    className="text-[11px] font-bold tracking-wide transition-all"
                     style={{ color: isExpanded ? '#ffffff' : color }}
                   >
-                    {isExpanded ? 'Contraer ▲' : 'Ver Tip ▼'}
+                    {isExpanded ? '▲ Menos' : '▼ Más'}
                   </span>
                 </div>
               </motion.div>
@@ -177,9 +179,9 @@ export default function ArsenalPage({ missions = [] }) {
       </div>
 
       {filteredMissions.length === 0 && (
-        <div className="text-center py-12">
-          <Search size={32} style={{ color: 'rgba(255,255,255,0.1)' }} className="mx-auto mb-3" />
-          <p className="text-sm" style={{ color: 'rgba(255,255,255,0.3)' }}>No se encontraron tips</p>
+        <div className="text-center py-16">
+          <Search size={40} style={{ color: 'rgba(255,255,255,0.08)' }} className="mx-auto mb-4" />
+          <p className="text-sm" style={{ color: 'rgba(255,255,255,0.4)' }}>No se encontraron tips</p>
         </div>
       )}
     </div>

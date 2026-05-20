@@ -36,37 +36,37 @@ export default function DashboardPage({
   };
 
   return (
-    <div className="px-4 py-4 pb-24">
+    <div className="px-3.5 sm:px-5 py-5 pb-28">
       {/* Header and Add Action */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="mb-5 flex items-center justify-between"
+        className="mb-7 flex items-center justify-between"
       >
         <div>
-          <h2 className="text-lg font-bold text-white tracking-wide">Misiones</h2>
-          <p className="text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>
+          <h2 className="text-xl font-bold text-white tracking-wider">⚔️ Misiones</h2>
+          <p className="text-xs mt-1" style={{ color: 'rgba(255,255,255,0.4)' }}>
             Supera desafíos para subir tu rango social
           </p>
         </div>
         <motion.button
           onClick={() => setIsAddModalOpen(true)}
-          className="p-2.5 rounded-xl border flex items-center justify-center gap-1.5 transition-all text-xs font-semibold text-white cursor-pointer"
+          className="px-3 py-2.5 rounded-xl border flex items-center justify-center gap-1.5 transition-all text-xs font-semibold text-white cursor-pointer"
           style={{
-            background: 'rgba(0, 255, 65, 0.08)',
-            borderColor: 'rgba(0, 255, 65, 0.3)',
-            boxShadow: '0 0 15px rgba(0, 255, 65, 0.05)',
+            background: 'linear-gradient(135deg, rgba(0, 255, 65, 0.12), rgba(0, 212, 255, 0.08))',
+            borderColor: 'rgba(0, 255, 65, 0.4)',
+            boxShadow: '0 0 20px rgba(0, 255, 65, 0.1)',
           }}
-          whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(0,255,65,0.15)' }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.06, boxShadow: '0 0 30px rgba(0,255,65,0.2)' }}
+          whileTap={{ scale: 0.94 }}
         >
-          <Plus size={16} style={{ color: '#00ff41' }} />
+          <Plus size={18} style={{ color: '#00ff41' }} />
           <span>Misión +</span>
         </motion.button>
       </motion.div>
 
       {/* Accordeons of phases */}
-      <div className="flex flex-col gap-4 md:gap-6">
+      <div className="flex flex-col gap-5 md:gap-7">
         {phases.map((phase, index) => (
           <motion.div
             key={phase.id}
