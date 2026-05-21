@@ -34,8 +34,8 @@ export default function MissionModal({ mission, isCompleted, onComplete, onClose
 
         {/* Modal */}
         <motion.div
-          className="relative w-full max-w-md rounded-2xl border border-white/10 overflow-hidden z-10 mx-4 sm:mx-0"
-          style={{ background: '#0d0d14', maxHeight: '85vh' }}
+          className="relative w-[88%] sm:w-full max-w-[400px] rounded-2xl border border-white/10 overflow-hidden z-10"
+          style={{ background: '#0d0d14', maxHeight: '85vh', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)' }}
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.95, opacity: 0 }}

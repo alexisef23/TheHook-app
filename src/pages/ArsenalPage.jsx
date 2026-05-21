@@ -16,6 +16,7 @@ const categoryColors = {
 
 export default function ArsenalPage({ missions = [] }) {
   const [expandedTips, setExpandedTips] = useState({});
+  const [searchQuery, setSearchQuery] = useState('');
 
   const toggleExpand = (id) => {
     setExpandedTips(prev => ({
@@ -24,17 +25,39 @@ export default function ArsenalPage({ missions = [] }) {
     }));
   };
 
+  const filteredMissions = missions.filter(mission => 
+    (mission.titulo?.toLowerCase() || '').includes(searchQuery.toLowerCase()) ||
+    (mission.categoria_tip?.toLowerCase() || '').includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="px-3.5 sm:px-5 py-5 pb-28">
-      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
+      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mb-5">
         <h2 className="text-xl font-bold text-white tracking-wider">🎯 Arsenal de Tips</h2>
         <p className="text-xs mt-1" style={{ color: 'rgba(255,255,255,0.45)' }}>Tu guía táctica para cada situación</p>
+      </motion.div>
+
+      {/* Search */}
+      <motion.div
+        className="relative mb-6 group"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.05 }}
+      >
+        <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 pointer-events-none group-focus-within:text-[#00ff41] transition-colors" />
+        <input
+          type="text"
+          placeholder="Buscar tips..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="w-full pl-12 pr-4 py-3 rounded-xl text-sm text-white placeholder-white/25 border outline-none bg-[#12121c] border-white/10 focus:border-[#00ff41]/40 focus:bg-[#151522] focus:shadow-[0_0_20px_rgba(0,255,65,0.08)] transition-all"
+        />
       </motion.div>
 
       {/* Tips List */}
       <div className="mt-6 flex flex-col gap-3">
         <AnimatePresence mode="popLayout">
-          {missions.map((mission, index) => {
+          {filteredMissions.map((mission, index) => {
             const Icon = categoryIcons[mission.categoria_tip] || Lightbulb;
             const color = categoryColors[mission.categoria_tip] || '#00ff41';
             const isExpanded = !!expandedTips[mission.id];

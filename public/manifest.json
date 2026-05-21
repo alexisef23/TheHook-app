@@ -1,123 +1,54 @@
 {
   "id": "/",
-  "scope": "/",
-  "lang": "es",
-  "dir": "ltr",
-  "name": "TheHook — Habilidades Sociales",
+  "name": "TheHook App",
   "short_name": "TheHook",
-  "description": "Levela tus habilidades sociales con misiones, desafíos y tips tácticos. Tu compañero discreto para dominar cualquier situación social.",
-  "categories": ["education", "productivity"],
+  "description": "Tu guía táctica para cada situación social",
   "start_url": "/",
   "display": "standalone",
-  "display_override": ["standalone", "window-controls-overlay", "minimal-ui"],
-  "orientation": "portrait-primary",
-  "theme_color": "#0a0a0f",
-  "background_color": "#0a0a0f",
-  "prefer_related_applications": false,
-  "related_applications": [
-    {
-      "platform": "play",
-      "url": "https://play.google.com/store/apps/details?id=com.thehook.app",
-      "id": "com.thehook.app"
-    }
+  "display_override": [
+    "standalone",
+    "window-controls-overlay",
+    "minimal-ui"
   ],
+  "background_color": "#0d0d14",
+  "theme_color": "#00ff41",
+  "lang": "es",
+  "dir": "ltr",
   "iarc_rating_id": "",
+  "scope_extensions": [],
   "icons": [
     {
-      "src": "/icons/icon-192.png",
+      "src": "icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icons/icon-192-maskable.png",
+      "src": "icons/icon-192-maskable.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/icons/icon-512-maskable.png",
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512-maskable.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
     }
   ],
+  "shortcuts": [],
   "screenshots": [
     {
-      "src": "/screenshots/screenshot-mobile-1.png",
-      "sizes": "540x720",
+      "src": "screenshot.png",
+      "sizes": "1080x1920",
       "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Pantalla de Misiones - TheHook"
-    },
-    {
-      "src": "/screenshots/screenshot-mobile-2.png",
-      "sizes": "540x720",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Pantalla de Perfil - TheHook"
-    },
-    {
-      "src": "/screenshots/screenshot-mobile-3.png",
-      "sizes": "540x720",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Arsenal de Tips - TheHook"
-    },
-    {
-      "src": "/screenshots/screenshot-desktop-1.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Vista de Escritorio - TheHook"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "Misiones",
-      "short_name": "Misiones",
-      "description": "Accede a tus misiones y desafíos rápidamente",
-      "url": "/?tab=dashboard",
-      "icons": [
-        {
-          "src": "/icons/icon-192.png",
-          "sizes": "192x192",
-          "type": "image/png"
-        }
-      ]
-    },
-    {
-      "name": "Arsenal de Tips",
-      "short_name": "Arsenal",
-      "description": "Consulta tips y guías tácticas para situaciones sociales",
-      "url": "/?tab=arsenal",
-      "icons": [
-        {
-          "src": "/icons/icon-192.png",
-          "sizes": "192x192",
-          "type": "image/png"
-        }
-      ]
-    },
-    {
-      "name": "Mi Perfil",
-      "short_name": "Perfil",
-      "description": "Revisa tu progreso, nivel y estadísticas sociales",
-      "url": "/?tab=profile",
-      "icons": [
-        {
-          "src": "/icons/icon-192.png",
-          "sizes": "192x192",
-          "type": "image/png"
-        }
-      ]
+      "form_factor": "narrow"
     }
   ]
 }
-

@@ -1,32 +1,33 @@
-const CACHE_NAME = 'thehook-v1';
+const CACHE_NAME = 'thehook-cache-v1';
 const urlsToCache = [
   '/',
   '/index.html',
   '/manifest.json',
   '/favicon.svg',
+  '/icons.svg',
+  // Se pueden agregar más assets estáticos aquí (CSS, JS)
 ];
 
-// Instalar el Service Worker
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      console.log('[Service Worker] Caché abierta:', CACHE_NAME);
-      return cache.addAll(urlsToCache).catch((error) => {
-        console.log('[Service Worker] Error al agregar URLs a caché:', error);
-      });
-    })
-  );
+// Evento de instalación: guarda en caché los assets iniciales
+self.addEventListener('install', event => {
   self.skipWaiting();
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => {
+        console.log('Opened cache');
+        return cache.addAll(urlsToCache);
+      })
+  );
 });
 
-// Activar el Service Worker y limpiar cachés antiguos
-self.addEventListener('activate', (event) => {
+// Evento de activación: limpia cachés antiguos si existen
+self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
+    caches.keys().then(cacheNames => {
       return Promise.all(
-        cacheNames.map((cacheName) => {
+        cacheNames.map(cacheName => {
           if (cacheName !== CACHE_NAME) {
-            console.log('[Service Worker] Eliminando caché antigua:', cacheName);
+            console.log('Deleting old cache:', cacheName);
             return caches.delete(cacheName);
           }
         })
@@ -36,61 +37,43 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// Estrategia: Cache First, falling back to Network
-self.addEventListener('fetch', (event) => {
-  const { request } = event;
-
-  // Ignorar solicitudes que no sean GET
-  if (request.method !== 'GET') {
-    return;
-  }
-
-  // Ignorar solicitudes a dominios externos (excepto APIs necesarias)
-  if (!request.url.startsWith(self.location.origin) && 
-      !request.url.includes('fonts.googleapis.com') &&
-      !request.url.includes('fonts.gstatic.com')) {
-    return;
-  }
-
+// Evento fetch: responde desde el caché o hace la petición a la red
+self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(request).then((response) => {
-      // Si está en caché, devolverlo
-      if (response) {
-        return response;
-      }
+    caches.match(event.request)
+      .then(response => {
+        // Devuelve el recurso del caché si existe
+        if (response) {
+          return response;
+        }
+        
+        // Clona la petición porque el stream solo se puede consumir una vez
+        const fetchRequest = event.request.clone();
 
-      // Si no está en caché, hacer fetch de la red
-      return fetch(request)
-        .then((response) => {
-          // No cachear respuestas no válidas
-          if (!response || response.status !== 200 || response.type === 'error') {
+        return fetch(fetchRequest).then(
+          response => {
+            // Verifica que la respuesta sea válida antes de cachearla
+            if(!response || response.status !== 200 || response.type !== 'basic') {
+              return response;
+            }
+
+            // Clona la respuesta porque el stream solo se puede consumir una vez
+            const responseToCache = response.clone();
+
+            caches.open(CACHE_NAME)
+              .then(cache => {
+                // Solo guardamos en caché peticiones GET válidas (evitar esquemas no soportados como chrome-extension)
+                if (event.request.method === 'GET' && event.request.url.startsWith('http')) {
+                  cache.put(event.request, responseToCache);
+                }
+              });
+
             return response;
           }
-
-          // Clonar la respuesta
-          const responseToCache = response.clone();
-
-          // Cachear la respuesta
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(request, responseToCache);
-          });
-
-          return response;
-        })
-        .catch(() => {
-          // Si no hay conexión y no está en caché, devolver página offline
-          console.log('[Service Worker] Offline:', request.url);
-          
-          // Puedes devolver una página offline personalizada aquí
-          // return caches.match('/offline.html');
+        ).catch(() => {
+          // Fallback offline básico (puedes agregar una página offline.html personalizada)
+          console.log('Error de red al intentar obtener:', event.request.url);
         });
-    })
+      })
   );
-});
-
-// Manejar mensajes desde el cliente
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
 });
