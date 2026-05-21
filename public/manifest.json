@@ -52,7 +52,7 @@
   "screenshots": [
     {
       "src": "screenshot.png",
-      "sizes": "1080x1920",
+      "sizes": "1080x2341",
       "type": "image/png",
       "form_factor": "narrow"
     }
