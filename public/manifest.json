@@ -7,7 +7,9 @@
   "scope": "/",
   "display": "standalone",
   "display_override": [
-    "standalone"
+    "standalone",
+    "window-controls-overlay",
+    "minimal-ui"
   ],
   "orientation": "portrait",
   "categories": [
@@ -24,25 +26,25 @@
   "scope_extensions": [],
   "icons": [
     {
-      "src": "icons/icon-192.png",
+      "src": "/icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icons/icon-192.png",
+      "src": "/icons/icon-192-maskable.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "icons/icon-512.png",
+      "src": "/icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icons/icon-512.png",
+      "src": "/icons/icon-512-maskable.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
@@ -50,7 +52,7 @@
   ],
   "screenshots": [
     {
-      "src": "screenshot.png",
+      "src": "/screenshot.png",
       "sizes": "1080x2341",
       "type": "image/png",
       "form_factor": "narrow"
