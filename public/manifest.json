@@ -1,16 +1,27 @@
 {
   "id": "/",
   "scope": "/",
+  "lang": "es",
+  "dir": "ltr",
   "name": "TheHook — Habilidades Sociales",
   "short_name": "TheHook",
   "description": "Levela tus habilidades sociales con misiones, desafíos y tips tácticos. Tu compañero discreto para dominar cualquier situación social.",
   "categories": ["education", "productivity"],
   "start_url": "/",
   "display": "standalone",
+  "display_override": ["standalone", "window-controls-overlay", "minimal-ui"],
   "orientation": "portrait-primary",
   "theme_color": "#0a0a0f",
   "background_color": "#0a0a0f",
   "prefer_related_applications": false,
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.thehook.app",
+      "id": "com.thehook.app"
+    }
+  ],
+  "iarc_rating_id": "",
   "icons": [
     {
       "src": "/icons/icon-192.png",
@@ -39,39 +50,39 @@
   ],
   "screenshots": [
     {
-      "src": "/screenshots/screenshot-1.png",
+      "src": "/screenshots/screenshot-mobile-1.png",
       "sizes": "540x720",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "Pantalla de Misiones"
+      "label": "Pantalla de Misiones - TheHook"
     },
     {
-      "src": "/screenshots/screenshot-2.png",
+      "src": "/screenshots/screenshot-mobile-2.png",
       "sizes": "540x720",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "Pantalla de Perfil"
+      "label": "Pantalla de Perfil - TheHook"
     },
     {
-      "src": "/screenshots/screenshot-3.png",
+      "src": "/screenshots/screenshot-mobile-3.png",
       "sizes": "540x720",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "Arsenal de Tips"
+      "label": "Arsenal de Tips - TheHook"
     },
     {
-      "src": "/screenshots/screenshot-4.png",
+      "src": "/screenshots/screenshot-desktop-1.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "Vista de Escritorio"
+      "label": "Vista de Escritorio - TheHook"
     }
   ],
   "shortcuts": [
     {
       "name": "Misiones",
       "short_name": "Misiones",
-      "description": "Accede a tus misiones rápidamente",
+      "description": "Accede a tus misiones y desafíos rápidamente",
       "url": "/?tab=dashboard",
       "icons": [
         {
@@ -84,7 +95,7 @@
     {
       "name": "Arsenal de Tips",
       "short_name": "Arsenal",
-      "description": "Consulta tips y guías tácticas",
+      "description": "Consulta tips y guías tácticas para situaciones sociales",
       "url": "/?tab=arsenal",
       "icons": [
         {
@@ -97,7 +108,7 @@
     {
       "name": "Mi Perfil",
       "short_name": "Perfil",
-      "description": "Revisa tu progreso y estadísticas",
+      "description": "Revisa tu progreso, nivel y estadísticas sociales",
       "url": "/?tab=profile",
       "icons": [
         {
@@ -109,3 +120,4 @@
     }
   ]
 }
+
