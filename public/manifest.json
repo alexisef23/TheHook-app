@@ -1,0 +1,111 @@
+{
+  "id": "/",
+  "scope": "/",
+  "name": "TheHook — Habilidades Sociales",
+  "short_name": "TheHook",
+  "description": "Levela tus habilidades sociales con misiones, desafíos y tips tácticos. Tu compañero discreto para dominar cualquier situación social.",
+  "categories": ["education", "productivity"],
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#0a0a0f",
+  "background_color": "#0a0a0f",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/screenshot-1.png",
+      "sizes": "540x720",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Pantalla de Misiones"
+    },
+    {
+      "src": "/screenshots/screenshot-2.png",
+      "sizes": "540x720",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Pantalla de Perfil"
+    },
+    {
+      "src": "/screenshots/screenshot-3.png",
+      "sizes": "540x720",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Arsenal de Tips"
+    },
+    {
+      "src": "/screenshots/screenshot-4.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Vista de Escritorio"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Misiones",
+      "short_name": "Misiones",
+      "description": "Accede a tus misiones rápidamente",
+      "url": "/?tab=dashboard",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Arsenal de Tips",
+      "short_name": "Arsenal",
+      "description": "Consulta tips y guías tácticas",
+      "url": "/?tab=arsenal",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Mi Perfil",
+      "short_name": "Perfil",
+      "description": "Revisa tu progreso y estadísticas",
+      "url": "/?tab=profile",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ]
+}
