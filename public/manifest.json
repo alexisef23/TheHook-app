@@ -4,11 +4,17 @@
   "short_name": "TheHook",
   "description": "Tu guía táctica para cada situación social",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "display_override": [
     "standalone",
     "window-controls-overlay",
     "minimal-ui"
+  ],
+  "orientation": "portrait",
+  "categories": [
+    "utilities",
+    "productivity"
   ],
   "background_color": "#0d0d14",
   "theme_color": "#00ff41",
